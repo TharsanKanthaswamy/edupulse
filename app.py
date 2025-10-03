@@ -16,9 +16,7 @@ CORS(app)
 openai.api_type = "azure"
 openai.api_base = "https://mlloops-dev.openai.azure.com/"
 openai.api_version = "2024-02-15-preview"
-import os
-
-openai.api_key = os.environ.get("OPENAI_API_KEY")
+openai.api_key = "FyyR8OVcJTtbqLr3PLHx6EVjpUEegPIHzuwEYJpUEZ5dJknWOhGIJQQJ99BCACYeBjFXJ3w3AAABACOGXuN6"
 
 DEPLOYMENT_NAME = "gpt-4o-mini"
 
@@ -642,5 +640,6 @@ if __name__ == "__main__":
     import os
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=False)
+
 
 
