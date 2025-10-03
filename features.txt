@@ -1,0 +1,63 @@
+==============================
+ Column Meanings (Merged Dataset)
+==============================
+
+--- Demographic / Background Info ---
+school_GP, school_MS         -> School (Gabriel Pereira / Mousinho da Silveira)
+sex_F, sex_M                 -> Gender
+age                          -> Student age (15–22 years)
+address_U, address_R         -> Home address (Urban / Rural)
+famsize_LE3, famsize_GT3     -> Family size (≤3 or >3)
+Pstatus_T, Pstatus_A         -> Parent’s cohabitation status (Together / Apart)
+
+--- Parent Education ---
+Medu                         -> Mother’s education
+                               0 = none, 1 = primary, 2 = 5–9th grade, 3 = secondary, 4 = higher education
+Fedu                         -> Father’s education (same coding as Medu)
+
+--- Parent Job ---
+Mjob_teacher, Mjob_health, Mjob_services, Mjob_at_home, Mjob_other
+                             -> Mother’s job
+Fjob_teacher, Fjob_health, Fjob_services, Fjob_at_home, Fjob_other
+                             -> Father’s job
+
+--- Reason for School Choice ---
+reason_home, reason_reputation, reason_course, reason_other
+
+--- Guardian ---
+guardian_mother, guardian_father, guardian_other
+
+--- School Support & Activities ---
+schoolsup_x, schoolsup_y     -> Extra educational support (1=yes, 0=no)
+famsup_x, famsup_y           -> Family educational support
+paid_x, paid_y               -> Extra paid classes in subject
+activities_x, activities_y   -> Extracurricular activities
+nursery                      -> Attended nursery school
+higher_x, higher_y           -> Aspires to higher education
+internet                     -> Internet access at home
+romantic_x, romantic_y       -> In a romantic relationship
+
+--- Academic Performance & Absences ---
+G1_x, G1_y                   -> 1st period grade (0–20) for Math/Portuguese
+G2_x, G2_y                   -> 2nd period grade (0–20)
+G3_x, G3_y                   -> Final grade (0–20)
+absences_x, absences_y       -> Number of school absences
+
+--- Study & Failures ---
+studytime_x, studytime_y     -> Weekly study time
+                               1 = <2h, 2 = 2–5h, 3 = 5–10h, 4 = >10h
+failures_x, failures_y       -> Past class failures (0–4+)
+
+--- Family & Social Life ---
+famrel_x, famrel_y           -> Family relationship quality (1=very bad → 5=excellent)
+freetime_x, freetime_y       -> Free time after school (1=very low → 5=very high)
+goout_x, goout_y             -> Going out with friends (1=very low → 5=very high)
+Dalc_x, Dalc_y               -> Workday alcohol consumption (1=very low → 5=very high)
+Walc_x, Walc_y               -> Weekend alcohol consumption (1=very low → 5=very high)
+health_x, health_y           -> Current health status (1=very bad → 5=very good)
+
+--- Engineered Features (from preprocessing) ---
+avg_grade                    -> Average of G1_x & G2_x
+failure_flag                 -> 1 if failures_x > 0, else 0
+attendance_ratio             -> Attendance percentage (1 - absences_x/50, clipped 0–1)
+dropout_risk                 -> Target label (1=at risk, 0=not at risk)

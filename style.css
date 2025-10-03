@@ -1,0 +1,300 @@
+/* --- Global Resets & Spotify Theme --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --spotify-black: #121212;
+    --spotify-gray-dark: #181818;
+    --spotify-gray-light: #282828;
+    --spotify-text-primary: #FFFFFF;
+    --spotify-text-secondary: #B3B3B3;
+    --spotify-green: #1DB954;
+    --font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--spotify-text-secondary);
+    background-color: var(--spotify-black);
+    /* REMOVED: overflow: hidden; was too restrictive */
+}
+
+h1, h2 {
+    color: var(--spotify-text-primary);
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: 900;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+i {
+    margin-right: 10px;
+    color: var(--spotify-green);
+}
+
+/* --- Layout: Sidebar & Main Content --- */
+.spotify-container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 350px;
+    background-color: #000;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
+}
+
+.sidebar header {
+    padding-bottom: 20px;
+}
+
+.sidebar header p {
+    font-size: 0.9rem;
+}
+
+.sidebar-section {
+    background-color: var(--spotify-gray-dark);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background: linear-gradient(rgba(0,0,0,0.6), var(--spotify-black) 40%);
+    /* CHANGED: Re-enabled scrolling for the main content area */
+    overflow-y: auto; 
+}
+
+/* --- Component Styling: Buttons, Inputs, Tables --- */
+
+/* Upload Section */
+.upload-label {
+    display: block;
+    padding: 12px 20px;
+    background-color: var(--spotify-gray-light);
+    color: var(--spotify-text-primary);
+    border: 1px dashed var(--spotify-text-secondary);
+    border-radius: 500px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 15px;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.upload-label:hover {
+    background-color: #333;
+    border-color: var(--spotify-green);
+}
+
+#analyze-button {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: var(--spotify-green);
+    color: var(--spotify-black);
+    font-weight: 700;
+    border: none;
+    border-radius: 500px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+#analyze-button:hover:not(:disabled) {
+    transform: scale(1.04);
+    background-color: #1ed760;
+}
+
+#analyze-button:disabled {
+    background-color: #535353;
+    color: #a7a7a7;
+    cursor: not-allowed;
+}
+
+/* Filter Buttons */
+.filter-section {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border: none;
+    background-color: var(--spotify-gray-light);
+    color: var(--spotify-text-primary);
+    border-radius: 500px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 700;
+    transition: background-color 0.2s;
+}
+
+.filter-btn.active {
+    background-color: var(--spotify-green);
+    color: var(--spotify-black);
+}
+
+.filter-btn:not(.active):hover {
+    background-color: #333;
+}
+
+/* Table Scrolling Container */
+.table-container {
+    background-color: rgba(24, 24, 24, 0.7);
+    border-radius: 8px;
+    padding: 10px;
+    max-height: 45vh; /* Keep the dedicated height for the table */
+    overflow-y: auto; /* Keep the dedicated scrollbar for the table */
+    flex-shrink: 0; /* Prevent it from shrinking/growing unexpectedly */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+th {
+    color: var(--spotify-text-secondary);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 400;
+    position: sticky; 
+    top: 0;
+    background-color: #202020;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.student-row {
+    transition: background-color 0.2s;
+    border-radius: 4px;
+}
+
+.student-row:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Risk Pills & Details Button */
+.risk-pill {
+    color: var(--spotify-black);
+    padding: 6px 12px;
+    border-radius: 500px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: inline-block;
+}
+
+.risk-low { background-color: #27ae60; }
+.risk-medium { background-color: #f39c12; }
+.risk-high { background-color: #e74c3c; }
+
+.view-details-btn {
+    background-color: var(--spotify-text-primary);
+    color: var(--spotify-black);
+    padding: 8px 16px;
+    border: none;
+    border-radius: 500px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.view-details-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Explanation Section */
+.explanation-section {
+    margin-top: 20px;
+    flex-shrink: 0;
+}
+
+#explanation-content {
+    background-color: var(--spotify-gray-light);
+    color: var(--spotify-text-secondary);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+#explanation-content * {
+    background-color: transparent !important;
+    color: inherit !important;
+}
+
+/* Footer & Placeholders */
+footer {
+    text-align: center;
+    padding: 40px 0 20px;
+    color: #535353;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
+.placeholder-text {
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* Custom Scrollbars */
+.main-content::-webkit-scrollbar,
+.table-container::-webkit-scrollbar {
+    width: 8px;
+}
+.main-content::-webkit-scrollbar-thumb,
+.table-container::-webkit-scrollbar-thumb {
+    background: #535353;
+    border-radius: 4px;
+}
+.main-content::-webkit-scrollbar-track,
+.table-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .spotify-container {
+        flex-direction: column;
+        height: auto;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
+    .main-content {
+        overflow-y: visible; /* Let mobile scroll normally */
+    }
+    .table-container {
+        max-height: none; 
+        overflow-y: visible;
+    }
+}
