@@ -1,6 +1,3 @@
-"""
-FINAL Student Dropout Risk Dashboard - Complete Working Version
-"""
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
@@ -16,7 +13,6 @@ import time
 app = Flask(__name__)
 CORS(app)
 
-# Azure OpenAI Configuration
 openai.api_type = "azure"
 openai.api_base = "https://mlloops-dev.openai.azure.com/"
 openai.api_version = "2024-02-15-preview"
@@ -26,7 +22,6 @@ openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 DEPLOYMENT_NAME = "gpt-4o-mini"
 
-# Global variables
 current_data = None
 rf_model = None
 feature_columns = None
@@ -101,7 +96,6 @@ class SHAPAnalyzer:
         if age > 19:
             base_risk += 10
         
-        # Add variation per student (consistent with list calculation)
         np.random.seed(student_idx)
         variation = np.random.randint(-8, 8)
         base_risk += variation
@@ -648,4 +642,5 @@ if __name__ == "__main__":
     import os
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=False)
+
 
